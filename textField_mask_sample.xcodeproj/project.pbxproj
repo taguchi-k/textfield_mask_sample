@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		96A79B101F58E59E001EC81C /* Mask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A79B0F1F58E59E001EC81C /* Mask.swift */; };
+		96A79B121F58E6F6001EC81C /* MaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A79B111F58E6F6001EC81C /* MaskTests.swift */; };
 		96C8769A1F55B37600EA1A4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C876991F55B37600EA1A4D /* AppDelegate.swift */; };
 		96C8769C1F55B37600EA1A4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96C8769B1F55B37600EA1A4D /* ViewController.swift */; };
 		96C8769F1F55B37600EA1A4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96C8769D1F55B37600EA1A4D /* Main.storyboard */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		96A79B0F1F58E59E001EC81C /* Mask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mask.swift; sourceTree = "<group>"; };
+		96A79B111F58E6F6001EC81C /* MaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaskTests.swift; sourceTree = "<group>"; };
 		96C876961F55B37600EA1A4D /* textField_mask_sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = textField_mask_sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C876991F55B37600EA1A4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		96C8769B1F55B37600EA1A4D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 			children = (
 				96C876991F55B37600EA1A4D /* AppDelegate.swift */,
 				96C8769B1F55B37600EA1A4D /* ViewController.swift */,
+				96A79B0F1F58E59E001EC81C /* Mask.swift */,
 				96C8769D1F55B37600EA1A4D /* Main.storyboard */,
 				96C876A01F55B37600EA1A4D /* Assets.xcassets */,
 				96C876A21F55B37600EA1A4D /* LaunchScreen.storyboard */,
@@ -90,6 +95,7 @@
 		96C876AD1F55B37600EA1A4D /* textField_mask_sampleTests */ = {
 			isa = PBXGroup;
 			children = (
+				96A79B111F58E6F6001EC81C /* MaskTests.swift */,
 				96C876AE1F55B37600EA1A4D /* textField_mask_sampleTests.swift */,
 				96C876B01F55B37600EA1A4D /* Info.plist */,
 			);
@@ -203,6 +209,7 @@
 			files = (
 				96C8769C1F55B37600EA1A4D /* ViewController.swift in Sources */,
 				96C8769A1F55B37600EA1A4D /* AppDelegate.swift in Sources */,
+				96A79B101F58E59E001EC81C /* Mask.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96C876AF1F55B37600EA1A4D /* textField_mask_sampleTests.swift in Sources */,
+				96A79B121F58E6F6001EC81C /* MaskTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +420,7 @@
 				96C876B51F55B37600EA1A4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96C876B61F55B37600EA1A4D /* Build configuration list for PBXNativeTarget "textField_mask_sampleTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +429,7 @@
 				96C876B81F55B37600EA1A4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

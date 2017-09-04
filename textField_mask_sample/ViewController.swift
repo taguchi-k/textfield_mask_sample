@@ -8,18 +8,27 @@
 
 import UIKit
 
+enum Const {
+    static let systemTextKey = "systemText"
+}
+
 final class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
 
-    var systemText = ""
-    var displayText: String {
-        return maskText(text: systemText)
+    var systemText: String {
+        get {
+            return UserDefaults().string(forKey: Const.systemTextKey) ?? ""
+        }
+        set {
+            UserDefaults().set(newValue, forKey: Const.systemTextKey)
+            UserDefaults().synchronize()
+        }
     }
 
-    var previousText = ""
-    var lastRange = NSRange()
-    var lastReplacementString = ""
+    var displayText: String {
+        return Mask.maskText(text: systemText)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,55 +48,32 @@ final class ViewController: UIViewController {
     }
 
     func textDidChange(notification: Notification) {
-        guard
-//            let textField = notification.object as? UITextField,
-            textField.markedTextRange == nil,
-            let textCount = textField.text?.characters.count,
-            textCount > systemText.characters.count, let range = Range(lastRange) else {
-                return
+        guard let text = textField.text else {
+            return
         }
-
-        // 内部の文字列を更新する
-        systemText = (systemText as NSString).replacingCharacters(in: lastRange, with: lastReplacementString)
-        textField.text = displayText
+        systemText = text
     }
 
     private func setup() {
 
         addObserver()
-
-        systemText = "hogehoge"
         textField.text = displayText
-    }
-
-    private func maskText(text: String) -> String {
-        guard text.characters.count > 3 else {
-            return text
-        }
-
-        // マスク部分
-        let range = text.startIndex ..< text.index(text.endIndex, offsetBy: -(text.characters.count - 3))
-        let substring = text.substring(with: range)
-        let maskedText = Array(repeating: "●", count: substring.characters.count).joined()
-
-        // 表示部分
-        let displayText = text.substring(from: text.index(text.endIndex, offsetBy: -3))
-
-        return maskedText + displayText
     }
 }
 
 // MARK: - UITextFieldDelegate
 extension ViewController: UITextFieldDelegate {
 
-    func textField(_ textField: UITextField,
-                   shouldChangeCharactersIn range: NSRange,
-                   replacementString string: String) -> Bool {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = systemText
+    }
 
-        previousText = systemText
-        lastRange = range
-        lastReplacementString = string
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.text = Mask.maskText(text: systemText)
+    }
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
         return true
     }
 }

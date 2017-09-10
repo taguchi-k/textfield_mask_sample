@@ -16,7 +16,7 @@ final class ViewController: UIViewController {
 
     @IBOutlet weak var textField: UITextField!
 
-    var systemText: String {
+    fileprivate var systemText: String {
         get {
             return UserDefaults().string(forKey: Const.systemTextKey) ?? ""
         }
@@ -24,10 +24,6 @@ final class ViewController: UIViewController {
             UserDefaults().set(newValue, forKey: Const.systemTextKey)
             UserDefaults().synchronize()
         }
-    }
-
-    var displayText: String {
-        return Mask.maskText(text: systemText)
     }
 
     override func viewDidLoad() {
@@ -39,7 +35,7 @@ final class ViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    func addObserver() {
+    private func addObserver() {
         let nc = NotificationCenter.default
         nc.addObserver(self,
                        selector: #selector(textDidChange(notification:)),
@@ -47,7 +43,7 @@ final class ViewController: UIViewController {
                        object: textField)
     }
 
-    func textDidChange(notification: Notification) {
+    @objc private func textDidChange(notification: Notification) {
         guard let text = textField.text else {
             return
         }
@@ -55,9 +51,8 @@ final class ViewController: UIViewController {
     }
 
     private func setup() {
-
         addObserver()
-        textField.text = displayText
+        textField.text = Mask.maskText(text: systemText)
     }
 }
 
